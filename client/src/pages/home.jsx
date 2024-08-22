@@ -4,7 +4,7 @@ import LuggageList from "../components/LuggageList";
 
 const home = () => {
   return (
-  <div>
+  <div className="px-4">
      <Header/>
      <LuggageList/>
   </div>
