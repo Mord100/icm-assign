@@ -3,9 +3,10 @@ import QRCode from 'qrcode.react';
 import { MdKeyboardArrowRight, MdLuggage } from "react-icons/md";
 
 const LuggageItem = ({ luggage }) => {
-  const { ticketNumber, departurePoint, destination, email, phone, bags } = luggage;
+  const { ticketNumber, departurePoint, destination, email, phone, bags, name } = luggage;
 
-  const qrData = JSON.stringify({  
+  const qrData = JSON.stringify({ 
+    name, 
     departurePoint,
     destination,
     ticketNumber,
@@ -19,6 +20,7 @@ const LuggageItem = ({ luggage }) => {
       <h2 className="text-xl font-bold border-b-2 pb-2 mb-4">Luggage Details</h2>
       <div className="flex flex-col md:flex-row items-start">
         <div className="flex-1 pr-4">
+        <p className="mb-2 items-center flex"><strong>Name</strong><MdKeyboardArrowRight className='mt-0.5' size={20} /> {name}</p>
           <p className="mb-2 items-center flex"><strong>Departure Point</strong><MdKeyboardArrowRight className='mt-0.5' size={20} /> {departurePoint}</p>
           <p className="mb-2 items-center flex"><strong>Destination</strong><MdKeyboardArrowRight className='mt-0.5' size={20} /> {destination}</p>
           <p className="mb-2 items-center flex"><strong>Ticket Number</strong> <MdKeyboardArrowRight className='mt-0.5' size={20} />{ticketNumber}</p>

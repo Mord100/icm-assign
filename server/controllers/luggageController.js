@@ -14,9 +14,11 @@ const getLuggages = asyncHandler(async (req, res) => {
 // @route  POST /api/luggages
 // @access Private
 const setLuggage = asyncHandler(async (req, res) => {
-  const { departurePoint, destination, ticketNumber, email, phone, bags } = req.body;
+  const { name, departurePoint, destination, ticketNumber, email, phone, bags } = req.body;
 
-  if (!departurePoint || !destination || !ticketNumber || !email || !phone || !bags) {
+  // console.log('payload', req.body)
+
+  if (!name || !departurePoint || !destination || !ticketNumber || !email || !phone || !bags) {
     res.status(400);
     throw new Error('Please provide all required fields');
   }
@@ -34,6 +36,7 @@ const setLuggage = asyncHandler(async (req, res) => {
 
     // Create the new luggage entry
     const luggage = await Luggage.create({
+      name,
       departurePoint,
       destination,
       ticketNumber,

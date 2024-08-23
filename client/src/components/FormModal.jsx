@@ -6,6 +6,7 @@ import { MdDelete } from "react-icons/md";
 
 const FormModal = ({ isOpen, closeModal }) => {
   const [formData, setFormData] = useState({
+    name: '',
     departurePoint: '',
     destination: '',
     ticketNumber: '',
@@ -84,6 +85,17 @@ const FormModal = ({ isOpen, closeModal }) => {
           </button>
         </div>
         <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+            <label className="block mb-2">Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border-2 border-gray-300 rounded"
+              required
+            />
+          </div>
           <div className="mb-4">
             <label className="block mb-2">Departure Point:</label>
             <input

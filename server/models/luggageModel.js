@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const luggageSchema = mongoose.Schema(
   {
+    name: {
+      type: String,
+      required: [true, 'Please add a name'],
+    },
     departurePoint: {
       type: String,
       required: [true, 'Please add a departure point'],

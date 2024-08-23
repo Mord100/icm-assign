@@ -15,7 +15,8 @@ const LuggageList = () => {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setLuggages(data);
+        const sortedLuggages = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        setLuggages(sortedLuggages);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -31,6 +32,7 @@ const LuggageList = () => {
   };
 
   const filteredLuggages = luggages.filter(luggage =>
+    luggage.name?.toLowerCase().includes(searchTerm) ||
     luggage.departurePoint.toLowerCase().includes(searchTerm) ||
     luggage.destination.toLowerCase().includes(searchTerm) ||
     luggage.ticketNumber.toLowerCase().includes(searchTerm) ||
@@ -38,8 +40,8 @@ const LuggageList = () => {
     luggage.phone.toLowerCase().includes(searchTerm)
   );
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className='flex justify-center mx-auto'>Loading...</p>;
+  if (error) return <p className='flex justify-center mx-auto'>Error: {error}</p>;
 
   return (
     <div className="space-y-4 max-w-3xl mx-auto">
