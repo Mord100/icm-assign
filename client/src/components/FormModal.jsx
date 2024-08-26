@@ -189,7 +189,7 @@ const FormModal = ({ isOpen, closeModal }) => {
             <button
               type="button"
               onClick={addBag}
-              className="mt-2 px-4 py-2 bg-gray-200 rounded"
+              className="mt-2 text-white px-4 py-2 bg-blue-600 rounded"
             >
               Add Another Bag
             </button>
